@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Task Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 0 10px #0598c9;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .info-box {
+      background-color: #0598c9;
+      color: white;
+      padding: 10px;
+      margin-bottom: 30px;
+    }
+
+    .task-section {
+      margin-top: 30px;
+    }
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .task-button {
+      background-color: #0598c9;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .task-button:hover {
+      background-color: #007a9e;
+    }
+
+    /* Screenshot Gallery */
+    .screenshot-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .screenshot-gallery img {
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Stopwatch Modal */
+    #stopwatchModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border: 2px solid #444;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0598c9;
+      z-index: 999;
+    }
+
+    #stopwatchModal button {
+      margin: 5px;
+      padding: 10px 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>STUDENT NAME : Alan Reji</h2>
+    <h2>CURRENT DATE : 13/06/2025</h2>
+    <h2>SUBJECT NAME : Web Technology</h2>
+
+    <div class="info-box">
+      <strong>INFORMATION ABOUT ME : Alan Reji, studying Bachelor in Information Technology</strong>
+    </div>
+
+    <div class="task-section">
+      <h3>Task Details:</h3>
+      <div class="task-grid">
+        <button class="task-button" onclick="task1()">Task 1</button>
+        <button class="task-button" onclick="task2()">Task 2</button>
+        <button class="task-button" onclick="task3()">Task 3</button>
+        <button class="task-button" onclick="task4()">Task 4</button>
+        <button class="task-button" onclick="task5()">Task 5</button>
+        <button class="task-button" onclick="task6()">Task 6</button>
+        <button class="task-button" onclick="task7()">Task 7</button>
+        <button class="task-button" onclick="task8()">Task 8</button>
+        <button class="task-button" onclick="task9()">Task 9</button>
+        <button class="task-button" onclick="task10()">Task 10</button>
+      </div>
+
+      <h3 style="margin-top: 40px;">Mini Project Screenshots:</h3>
+      <div class="screenshot-gallery">
+        <img src="C:\Users\student\Downloads\Screenshot 2025-06-13 122004.png" alt="Screenshot 1">
+        <img src="C:\Users\student\Pictures\Screenshots\Screenshot 2025-06-13 122029.png" alt="Screenshot 2">
+        <img src="C:\Users\student\Pictures\Screenshots\Screenshot 2025-06-13 124406.png" alt="Screenshot 3">
+      </div>
+    </div>
+  </div>
+
+  <!-- Stopwatch Modal -->
+  <div id="stopwatchModal">
+    <h3>Stopwatch</h3>
+    <p id="timerDisplay" style="font-size:24px;">0</p>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+    <button onclick="resetTimer()">Reset</button>
+    <button onclick="closeModal()">Close</button>
+  </div>
+
+  <script>
+    function task1() {
+      let name = prompt("Enter your name:");
+      let age = prompt("Enter your age:");
+      let email = prompt("Enter your email:");
+      alert(`Name: ${name}\nAge: ${age}\nEmail: ${email}`);
+    }
+
+    function task2() {
+      const person = { name: "Alan", age: 22, gender: "male" };
+      alert(JSON.stringify(person));
+    }
+
+    let timer = 0;
+    let intervalId;
+
+    function task3() {
+      document.getElementById('stopwatchModal').style.display = 'block';
+      document.getElementById('timerDisplay').textContent = timer;
+    }
+
+    function startTimer() {
+      if (!intervalId) {
+        intervalId = setInterval(() => {
+          timer++;
+          document.getElementById('timerDisplay').textContent = timer;
+        }, 1000);
+      }
+    }
+
+    function stopTimer() {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    function resetTimer() {
+      stopTimer();
+      timer = 0;
+      document.getElementById('timerDisplay').textContent = timer;
+    }
+
+    function closeModal() {
+      stopTimer();
+      document.getElementById('stopwatchModal').style.display = 'none';
+    }
+
+    function task4() {
+      const fruits = ["Apple", "Banana", "Mango", "Orange"];
+      alert("Third fruit is: " + fruits[2]);
+    }
+
+    function task5() {
+      let a = +prompt("Enter first number:");
+      let b = +prompt("Enter second number:");
+      let op = prompt("Choose operation: +, -, *, /");
+      let result;
+      switch(op) {
+        case "+": result = a + b; break;
+        case "-": result = a - b; break;
+        case "*": result = a * b; break;
+        case "/": result = a / b; break;
+        default: result = "Invalid operation";
+      }
+      alert("Result: " + result);
+    }
+
+    function task6() {
+      const array = [10, 20, 30, 40];
+      alert("Stored array: " + array.join(", "));
+    }
+
+    function task7() {
+      const arr = [1, 2, 3, 4];
+      const doubled = arr.map(x => x * 2);
+      alert("Doubled Array: " + doubled.join(", "));
+    }
+
+    function task8() {
+      const input = prompt("Enter at least 10 characters:");
+      if (input.length >= 10) {
+        alert("10th character: " + input[9]);
+      } else {
+        alert("Not enough characters!");
+      }
+    }
+
+    function task9() {
+      const arr = prompt("Enter elements separated by commas:").split(",");
+      const last = arr[arr.length - 1];
+      alert("Last Element: " + last);
+    }
+
+    function task10() {
+      let input = prompt("Enter a 10-digit number:");
+      if (/^\d{10}$/.test(input)) {
+        alert("Valid input: " + input);
+      } else {
+        alert("Only 10 digits allowed.");
+      }
+    }
+  </script>
+</body>
+</html>
